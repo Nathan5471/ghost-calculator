@@ -23,10 +23,10 @@ func calculate() -> void:
 	while true:
 		if (i == currentText.length()):
 			if (openParentheses != 0):
-				displayError()
+				displayError("UNCLOSED PARENTHESIS")
 				return
 			if (!lastParsedCharacter.is_valid_int() && lastParsedCharacter != "!" && lastParsedCharacter != ")"):
-				displayError()
+				displayError("INVALID INPUT")
 				return
 			if (currentNumber != ""):
 				output.append(currentNumber)
@@ -41,7 +41,7 @@ func calculate() -> void:
 			continue
 		elif (character == "."):
 			if (currentNumber.contains(".")):
-				displayError()
+				displayError("INVALID NUMBER")
 				return
 			if (currentNumber == ""):
 				currentNumber += "0"
@@ -54,7 +54,7 @@ func calculate() -> void:
 			currentNumber = ""
 		
 		if ((character != "(" && lastParsedCharacter == "") && !lastParsedCharacter.is_valid_int() && lastParsedCharacter != "!" && lastParsedCharacter != ")"):
-			displayError()
+			displayError("INVALID INPUT")
 			return
 		
 		if (character == "+" || character == "-"):
@@ -112,7 +112,7 @@ func calculate() -> void:
 			continue
 		elif (character == ")"):
 			if (openParentheses == 0):
-				displayError()
+				displayError("MISSING OPENING PARENTHESIS")
 				return
 			openParentheses -= 1
 			while true:
@@ -148,7 +148,7 @@ func calculate() -> void:
 			var b: float = evaluationStack.pop_back()
 			var a: float = evaluationStack.pop_back()
 			if (b == 0.0):
-				displayError()
+				displayError("DIVISION BY ZERO")
 				return
 			var result = a / b
 			evaluationStack.append(result)
@@ -165,7 +165,7 @@ func calculate() -> void:
 		elif (item == "!"):
 			var a: float = evaluationStack.pop_back()
 			if (a < 0 || a > 13 || a != floor(a)):
-				displayError()
+				displayError("CAN'T FACTORIAL")
 				return
 			var result = 1
 			for number in range(1, int(a)+1):
@@ -177,9 +177,9 @@ func calculate() -> void:
 		currentText = str(evaluationStack[0])
 	display.text = currentText
 
-func displayError() -> void:
+func displayError(error: String) -> void:
 	currentText = ""
-	display.text = "ERROR"
+	display.text = error
 
 func handleButtonPress(buttonValue: String) -> void:
 	if (buttonValue == "="):
