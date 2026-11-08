@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://84303gret5dm"]
 
-[ext_resource type="Script" uid="uid://drpe8wrd6smpn" path="res://calculator.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://drpe8wrd6smpn" path="res://scripts/calculator.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dyouk5sitkxpf" path="res://assets/ghost-calculator.png" id="2_0xm2m"]
 [ext_resource type="FontFile" uid="uid://cnj8o60qe2214" path="res://assets/Chilanka-Regular.ttf" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c3c1ir5ieih62" path="res://scenes/button.tscn" id="4_1bvp3"]
 
 [sub_resource type="FontVariation" id="FontVariation_0xm2m"]
 base_font = ExtResource("3_h2yge")
@@ -27,3 +28,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=738010724]
+
+[node name="Buttons" type="Node2D" parent="." unique_id=902315282]
+
+[node name="Button1" type="Area2D" parent="Buttons" unique_id=2064652739]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button1" unique_id=169555571]
+polygon = PackedVector2Array(103, 30, 160, 24, 169, 130, 104, 134)
+
+[node name="Button" parent="Buttons/Button1/CollisionPolygon2D" unique_id=816141806 instance=ExtResource("4_1bvp3")]
+position = Vector2(132, 79)
+buttonValue = "="
+
+[node name="Button2" type="Area2D" parent="Buttons" unique_id=1943188880]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button2" unique_id=690651619]
+polygon = PackedVector2Array(-194, 115, -64, 107, -60, 154, -187, 166)
+
+[node name="Button" parent="Buttons/Button2/CollisionPolygon2D" unique_id=746595607 instance=ExtResource("4_1bvp3")]
+position = Vector2(-127, 137)
+buttonValue = "0"
+
+[connection signal="input_event" from="Buttons/Button1" to="Buttons/Button1/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button2" to="Buttons/Button2/CollisionPolygon2D/Button" method="_on_button_input_event"]

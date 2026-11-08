@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://c3c1ir5ieih62"]
 
-[ext_resource type="Script" uid="uid://ccao5vittm80w" path="res://scenes/button.gd" id="1_mi6dp"]
+[ext_resource type="FontFile" uid="uid://cnj8o60qe2214" path="res://assets/Chilanka-Regular.ttf" id="1_mi6dp"]
+[ext_resource type="Script" uid="uid://ccao5vittm80w" path="res://scripts/button.gd" id="1_rhj8v"]
 
-[node name="Button" type="Node2D" unique_id=566316646]
-script = ExtResource("1_mi6dp")
+[sub_resource type="FontVariation" id="FontVariation_n4pas"]
+base_font = ExtResource("1_mi6dp")
+spacing_top = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1581273121]
+[node name="Button" type="Node2D" unique_id=816141806]
+script = ExtResource("1_rhj8v")
+
+[node name="Label" type="Label" parent="." unique_id=1390522089]
+offset_left = -11.0
+offset_top = -30.0
+offset_right = 11.0
+offset_bottom = 30.0
+theme_override_fonts/font = SubResource("FontVariation_n4pas")
+theme_override_font_sizes/font_size = 44
+horizontal_alignment = 1
+vertical_alignment = 1
