@@ -3,6 +3,12 @@ extends Node2D
 var currentText = ""
 @onready var display = $Label
 
+func reverseArray(array: Array[String]):
+	var newArray: Array[String] = []
+	while array.size() > 0:
+		newArray.append(array.pop_back())
+	return newArray
+
 func calculate() -> void:
 	if (currentText == ""):
 		return
@@ -10,16 +16,20 @@ func calculate() -> void:
 	var output: Array[String] = []
 	var operatorStack: Array[String] = []
 	var currentNumber: String = ""
+	var lastParsedCharacter = ""
 	var i = 0
 	while true:
 		if (i == currentText.length()):
 			if (currentNumber != ""):
 				output.append(currentNumber)
+			if (operatorStack.size() > 0):
+				output.append_array(reverseArray(operatorStack))
 			break
 		var character = currentText[i]
 		if (character.is_valid_int()):
 			currentNumber += character
 			i += 1
+			lastParsedCharacter = character
 			continue
 		elif (character == "."):
 			if (currentNumber == "" || currentNumber.contains(".")):
@@ -27,19 +37,50 @@ func calculate() -> void:
 				return
 			currentNumber += character
 			i += 1
+			lastParsedCharacter = character
 			continue
 		elif (currentNumber != ""):
 			output.append(currentNumber)
 			currentNumber = ""
+		if (!lastParsedCharacter.is_valid_int()):
+			displayError()
+			return
+		if (character == "+" || character == "-"):
+			if (operatorStack.size() == 0 || (operatorStack[-1] == "+" || operatorStack[-1] == "-")):
+				operatorStack.append(character)
+			else:
+				output.append_array(reverseArray(operatorStack))
+				operatorStack = []
+				continue
 			i += 1
+			lastParsedCharacter = character
 			continue
-		i += 1
+		elif (character == "x" || character == "/" || character == "%"):
+			if (operatorStack.size() == 0 || operatorStack[-1] != "^"):
+				operatorStack.append(character)
+			else:
+				output.append_array(reverseArray(operatorStack))
+				operatorStack = []
+				continue
+			i += 1
+			lastParsedCharacter = character
+			continue
+		elif (character == "^"):
+			operatorStack.append(character)
+			i += 1
+			lastParsedCharacter = character
+			continue
+		elif (character == "!"):
+			output.append(character)
+			i += 1
+			lastParsedCharacter = character
+			continue
 	for number in output:
 		print(number)
 	
 
 func displayError() -> void:
-	pass
+	print("ERROR")
 
 func handleButtonPress(buttonValue: String) -> void:
 	if (buttonValue == "="):
