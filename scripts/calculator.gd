@@ -168,7 +168,11 @@ func calculate() -> void:
 			for number in range(1, int(a)+1):
 				result *= number
 			evaluationStack.append(result)
-	print(evaluationStack[0])
+	if (evaluationStack[0] == floor(evaluationStack[0])):
+		currentText = str(int(evaluationStack[0]))
+	else:
+		currentText = str(evaluationStack[0])
+	display.text = currentText
 
 func displayError() -> void:
 	print("ERROR")
