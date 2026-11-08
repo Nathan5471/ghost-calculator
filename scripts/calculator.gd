@@ -3,21 +3,12 @@ extends Node2D
 var currentText = ""
 @onready var display = $Label
 
-func reverseArray(array: Array[String]) -> Array[Array]:
+func reverseArray(array: Array[String]) -> Array[String]:
 	var newArray: Array[String] = []
-	var needsOpeningParenthesis = false
 	while array.size() > 0:
 		var character = array.pop_back()
-		if (character == ")"):
-			needsOpeningParenthesis = true
-			continue
-		if (character == "(" && not needsOpeningParenthesis):
-			break
-		if (character == "(" && needsOpeningParenthesis):
-			needsOpeningParenthesis = false
-			continue
 		newArray.append(character)
-	return [newArray, array]
+	return newArray
 
 func calculate() -> void:
 	if (currentText == ""):
@@ -37,8 +28,7 @@ func calculate() -> void:
 			if (currentNumber != ""):
 				output.append(currentNumber)
 			if (operatorStack.size() > 0):
-				var reversedInfo: Array[Array] = reverseArray(operatorStack)
-				output.append_array(reversedInfo[0])
+				output.append_array(reverseArray(operatorStack))
 			break
 		var character = currentText[i]
 		if (character.is_valid_int()):
@@ -58,21 +48,26 @@ func calculate() -> void:
 			output.append(currentNumber)
 			currentNumber = ""
 		
-		if ((character == "(" && lastParsedCharacter == "")&& !lastParsedCharacter.is_valid_int() && lastParsedCharacter != "!" && lastParsedCharacter != ")"):
+		if ((character != "(" && lastParsedCharacter == "") && !lastParsedCharacter.is_valid_int() && lastParsedCharacter != "!" && lastParsedCharacter != ")"):
 			displayError()
 			return
 		
 		if (character == "+" || character == "-"):
 			if (operatorStack.size() == 0):
 				operatorStack.append(character)
+			elif (operatorStack[-1] == "("):
+				operatorStack.append(character)
 			elif (operatorStack[-1] == "+" || operatorStack[-1] == "-"):
 				output.append(operatorStack.pop_back())
 				operatorStack.append(character)
 			else:
-				var reversedInfo: Array[Array] = reverseArray(operatorStack)
-				output.append_array(reversedInfo[0])
-				operatorStack = reversedInfo[1]
-				continue
+				if (openParentheses == 0):
+					output.append_array(reverseArray(operatorStack))
+				else:
+					while true:
+						if (operatorStack[-1] == "("):
+							break
+						output.append(operatorStack.pop_back())
 			i += 1
 			lastParsedCharacter = character
 			continue
@@ -80,10 +75,13 @@ func calculate() -> void:
 			if (operatorStack.size() == 0 || (operatorStack[-1] == "+" || operatorStack[-1] == "-")):
 				operatorStack.append(character)
 			elif (operatorStack[-1] == "^"):
-				var reversedInfo: Array[Array] = reverseArray(operatorStack)
-				output.append_array(reversedInfo[0])
-				operatorStack = reversedInfo[1]
-				continue
+				if (openParentheses == 0):
+					output.append_array(reverseArray(operatorStack))
+				else:
+					while true:
+						if (operatorStack[-1] == "("):
+							break
+						output.append(operatorStack.pop_back())
 			else:
 				output.append(operatorStack.pop_back())
 				operatorStack.append(character)
@@ -112,10 +110,11 @@ func calculate() -> void:
 				displayError()
 				return
 			openParentheses -= 1
-			operatorStack.append(character)
-			var reversedInfo: Array[Array] = reverseArray(operatorStack)
-			output.append_array(reversedInfo[0])
-			operatorStack = reversedInfo[1]
+			while true:
+				var currentCharacter = operatorStack.pop_back()
+				if (currentCharacter == "("):
+					break
+				output.append(currentCharacter)
 			i += 1
 			lastParsedCharacter = character
 			continue
