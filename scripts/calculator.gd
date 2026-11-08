@@ -37,9 +37,11 @@ func calculate() -> void:
 			lastParsedCharacter = character
 			continue
 		elif (character == "."):
-			if (currentNumber == "" || currentNumber.contains(".")):
+			if (currentNumber.contains(".")):
 				displayError()
 				return
+			if (currentNumber == ""):
+				currentNumber += "0"
 			currentNumber += character
 			i += 1
 			lastParsedCharacter = character
@@ -118,9 +120,55 @@ func calculate() -> void:
 			i += 1
 			lastParsedCharacter = character
 			continue
-	for number in output:
-		print(number)
 	
+	var evaluationStack: Array[float] = []
+	for item in output:
+		if (item.is_valid_float()):
+			evaluationStack.append(float(item))
+			continue
+		if (item == "+"):
+			var b: float = evaluationStack.pop_back()
+			var a: float = evaluationStack.pop_back()
+			var result = a + b
+			evaluationStack.append(result)
+		elif (item == "-"):
+			var b: float = evaluationStack.pop_back()
+			var a: float = evaluationStack.pop_back()
+			var result = a - b
+			evaluationStack.append(result)
+		elif (item == "x"):
+			var b: float = evaluationStack.pop_back()
+			var a: float = evaluationStack.pop_back()
+			var result = a * b
+			evaluationStack.append(result)
+		elif (item == "/"):
+			var b: float = evaluationStack.pop_back()
+			var a: float = evaluationStack.pop_back()
+			if (b == 0.0):
+				displayError()
+				return
+			var result = a / b
+			evaluationStack.append(result)
+		elif (item == "%"):
+			var b: float = evaluationStack.pop_back()
+			var a: float = evaluationStack.pop_back()
+			var result = fmod(a, b)
+			evaluationStack.append(result)
+		elif (item == "^"):
+			var b: float = evaluationStack.pop_back()
+			var a: float = evaluationStack.pop_back()
+			var result = a ** b
+			evaluationStack.append(result)
+		elif (item == "!"):
+			var a: float = evaluationStack.pop_back()
+			if (a < 0 || a > 13 || a != floor(a)):
+				displayError()
+				return
+			var result = 1
+			for number in range(1, int(a)+1):
+				result *= number
+			evaluationStack.append(result)
+	print(evaluationStack[0])
 
 func displayError() -> void:
 	print("ERROR")
