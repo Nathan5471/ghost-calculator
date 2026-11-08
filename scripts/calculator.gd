@@ -42,11 +42,14 @@ func calculate() -> void:
 		elif (currentNumber != ""):
 			output.append(currentNumber)
 			currentNumber = ""
-		if (!lastParsedCharacter.is_valid_int()):
+		if (!lastParsedCharacter.is_valid_int() && lastParsedCharacter != "!"):
 			displayError()
 			return
 		if (character == "+" || character == "-"):
-			if (operatorStack.size() == 0 || (operatorStack[-1] == "+" || operatorStack[-1] == "-")):
+			if (operatorStack.size() == 0):
+				operatorStack.append(character)
+			elif (operatorStack[-1] == "+" || operatorStack[-1] == "-"):
+				output.append(operatorStack.pop_back())
 				operatorStack.append(character)
 			else:
 				output.append_array(reverseArray(operatorStack))
@@ -56,12 +59,15 @@ func calculate() -> void:
 			lastParsedCharacter = character
 			continue
 		elif (character == "x" || character == "/" || character == "%"):
-			if (operatorStack.size() == 0 || operatorStack[-1] != "^"):
+			if (operatorStack.size() == 0 || (operatorStack[-1] == "+" || operatorStack[-1] == "-")):
 				operatorStack.append(character)
-			else:
+			elif (operatorStack[-1] == "^"):
 				output.append_array(reverseArray(operatorStack))
 				operatorStack = []
 				continue
+			else:
+				output.append(operatorStack.pop_back())
+				operatorStack.append(character)
 			i += 1
 			lastParsedCharacter = character
 			continue
