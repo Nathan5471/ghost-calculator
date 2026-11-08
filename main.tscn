@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://84303gret5dm"]
 
+[ext_resource type="Script" uid="uid://drpe8wrd6smpn" path="res://calculator.gd" id="1_ig7tw"]
+
 [node name="Node2D" type="Node2D" unique_id=1017324774]
+script = ExtResource("1_ig7tw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2141137335]
