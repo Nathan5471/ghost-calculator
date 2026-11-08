@@ -13,7 +13,9 @@ func handleButtonPress(buttonValue: String) -> void:
 	if (buttonValue == "="):
 		pass
 	elif (buttonValue == "<-"):
-		pass
+		currentText = currentText.left(-1)
+	elif (buttonValue == "C"):
+		currentText = ""
 	else:
 		currentText += buttonValue
 	updateDisplay()

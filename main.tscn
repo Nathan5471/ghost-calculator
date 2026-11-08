@@ -23,7 +23,6 @@ offset_bottom = -187.79465
 rotation = -0.061086524
 theme_override_fonts/font = SubResource("FontVariation_0xm2m")
 theme_override_font_sizes/font_size = 36
-text = "20+25"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -145,7 +144,7 @@ priority = 2
 polygon = PackedVector2Array(-49, 104, 1, 102, 4, 141, -48, 153)
 
 [node name="Button" parent="Buttons/Button12/CollisionPolygon2D" unique_id=825758999 instance=ExtResource("4_1bvp3")]
-position = Vector2(-25, 127)
+position = Vector2(-23, 122)
 buttonValue = "."
 
 [node name="Button13" type="Area2D" parent="Buttons" unique_id=1340846622]
@@ -155,7 +154,7 @@ priority = 2
 polygon = PackedVector2Array(23, 102, 88, 96, 91, 138, 25, 141)
 
 [node name="Button" parent="Buttons/Button13/CollisionPolygon2D" unique_id=1173037063 instance=ExtResource("4_1bvp3")]
-position = Vector2(57, 117)
+position = Vector2(52, 120)
 buttonValue = "+"
 
 [node name="Button14" type="Area2D" parent="Buttons" unique_id=1115980963]
@@ -165,7 +164,7 @@ priority = 2
 polygon = PackedVector2Array(22, 35, 84, 38, 88, 77, 24, 73)
 
 [node name="Button" parent="Buttons/Button14/CollisionPolygon2D" unique_id=1247427936 instance=ExtResource("4_1bvp3")]
-position = Vector2(53, 57)
+position = Vector2(55, 53)
 buttonValue = "-"
 
 [node name="Button15" type="Area2D" parent="Buttons" unique_id=1773465033]
@@ -198,6 +197,66 @@ polygon = PackedVector2Array(77, -182, 145, -188, 143, -132, 72, -137)
 position = Vector2(100, -161)
 buttonValue = "<-"
 
+[node name="Button18" type="Area2D" parent="Buttons" unique_id=1904991789]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button18" unique_id=113625073]
+polygon = PackedVector2Array(81, -103, 147, -110, 147, -50, 74, -52)
+
+[node name="Button" parent="Buttons/Button18/CollisionPolygon2D" unique_id=1822866764 instance=ExtResource("4_1bvp3")]
+position = Vector2(111, -81)
+buttonValue = "("
+
+[node name="Button19" type="Area2D" parent="Buttons" unique_id=1891714600]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button19" unique_id=219747731]
+polygon = PackedVector2Array(92, -37, 149, -37, 146, 8, 97, 14)
+
+[node name="Button" parent="Buttons/Button19/CollisionPolygon2D" unique_id=1624898311 instance=ExtResource("4_1bvp3")]
+position = Vector2(118, -15)
+buttonValue = ")"
+
+[node name="Button20" type="Area2D" parent="Buttons" unique_id=1891509672]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button20" unique_id=1146586854]
+polygon = PackedVector2Array(6, -179, 54, -185, 55, -131, 7, -134)
+
+[node name="Button" parent="Buttons/Button20/CollisionPolygon2D" unique_id=1151935708 instance=ExtResource("4_1bvp3")]
+position = Vector2(27, -156)
+buttonValue = "C"
+
+[node name="Button21" type="Area2D" parent="Buttons" unique_id=1007738141]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button21" unique_id=2134953356]
+polygon = PackedVector2Array(-70, -180, -17, -183, -17, -126, -70, -122)
+
+[node name="Button" parent="Buttons/Button21/CollisionPolygon2D" unique_id=1848290833 instance=ExtResource("4_1bvp3")]
+position = Vector2(-49, -153)
+buttonValue = "%"
+
+[node name="Button22" type="Area2D" parent="Buttons" unique_id=142515470]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button22" unique_id=115506405]
+polygon = PackedVector2Array(-146, -175, -90, -178, -89, -124, -151, -121)
+
+[node name="Button" parent="Buttons/Button22/CollisionPolygon2D" unique_id=2103592903 instance=ExtResource("4_1bvp3")]
+position = Vector2(-122, -148)
+buttonValue = "^"
+
+[node name="Button23" type="Area2D" parent="Buttons" unique_id=208619218]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button23" unique_id=254054887]
+polygon = PackedVector2Array(-222, -176, -168, -176, -168, -121, -217, -122)
+
+[node name="Button" parent="Buttons/Button23/CollisionPolygon2D" unique_id=213942120 instance=ExtResource("4_1bvp3")]
+position = Vector2(-192, -149)
+buttonValue = "!"
+
 [connection signal="input_event" from="Buttons/Button1" to="Buttons/Button1/CollisionPolygon2D/Button" method="_on_button_input_event"]
 [connection signal="input_event" from="Buttons/Button2" to="Buttons/Button2/CollisionPolygon2D/Button" method="_on_button_input_event"]
 [connection signal="input_event" from="Buttons/Button3" to="Buttons/Button3/CollisionPolygon2D/Button" method="_on_button_input_event"]
@@ -215,3 +274,9 @@ buttonValue = "<-"
 [connection signal="input_event" from="Buttons/Button15" to="Buttons/Button15/CollisionPolygon2D/Button" method="_on_button_input_event"]
 [connection signal="input_event" from="Buttons/Button16" to="Buttons/Button16/CollisionPolygon2D/Button" method="_on_button_input_event"]
 [connection signal="input_event" from="Buttons/Button17" to="Buttons/Button17/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button18" to="Buttons/Button18/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button19" to="Buttons/Button19/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button20" to="Buttons/Button20/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button21" to="Buttons/Button21/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button22" to="Buttons/Button22/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button23" to="Buttons/Button23/CollisionPolygon2D/Button" method="_on_button_input_event"]
