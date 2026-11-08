@@ -25,6 +25,9 @@ func calculate() -> void:
 			if (openParentheses != 0):
 				displayError()
 				return
+			if (!lastParsedCharacter.is_valid_int() && lastParsedCharacter != "!" && lastParsedCharacter != ")"):
+				displayError()
+				return
 			if (currentNumber != ""):
 				output.append(currentNumber)
 			if (operatorStack.size() > 0):
@@ -175,12 +178,13 @@ func calculate() -> void:
 	display.text = currentText
 
 func displayError() -> void:
-	print("ERROR")
+	currentText = ""
+	display.text = "ERROR"
 
 func handleButtonPress(buttonValue: String) -> void:
 	if (buttonValue == "="):
-		print("Caclulating")
 		calculate()
+		return
 	elif (buttonValue == "<-"):
 		currentText = currentText.left(-1)
 	elif (buttonValue == "C"):
