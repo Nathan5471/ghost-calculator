@@ -16,6 +16,7 @@ func handleButtonPress(buttonValue: String) -> void:
 		pass
 	else:
 		currentText += buttonValue
+	updateDisplay()
 
 func updateDisplay() -> void:
 	display.text = currentText

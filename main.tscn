@@ -49,5 +49,169 @@ polygon = PackedVector2Array(-194, 115, -64, 107, -60, 154, -187, 166)
 position = Vector2(-127, 137)
 buttonValue = "0"
 
+[node name="Button3" type="Area2D" parent="Buttons" unique_id=1301299853]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button3" unique_id=1657857909]
+polygon = PackedVector2Array(-202, 53, -140, 45, -138, 87, -200, 100)
+
+[node name="Button" parent="Buttons/Button3/CollisionPolygon2D" unique_id=1503961101 instance=ExtResource("4_1bvp3")]
+position = Vector2(-171, 74)
+buttonValue = "1"
+
+[node name="Button4" type="Area2D" parent="Buttons" unique_id=2047514207]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button4" unique_id=1645005462]
+polygon = PackedVector2Array(-120, 40, -66, 36, -64, 89, -119, 95)
+
+[node name="Button" parent="Buttons/Button4/CollisionPolygon2D" unique_id=1674900033 instance=ExtResource("4_1bvp3")]
+position = Vector2(-94, 66)
+buttonValue = "2"
+
+[node name="Button5" type="Area2D" parent="Buttons" unique_id=414462839]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button5" unique_id=938156298]
+polygon = PackedVector2Array(-50, 34, 5, 34, -1, 79, -51, 84)
+
+[node name="Button" parent="Buttons/Button5/CollisionPolygon2D" unique_id=1109481275 instance=ExtResource("4_1bvp3")]
+position = Vector2(-29, 60)
+buttonValue = "3"
+
+[node name="Button6" type="Area2D" parent="Buttons" unique_id=1275643408]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button6" unique_id=848794266]
+polygon = PackedVector2Array(-203, -27, -145, -28, -137, 28, -202, 32)
+
+[node name="Button" parent="Buttons/Button6/CollisionPolygon2D" unique_id=1196800521 instance=ExtResource("4_1bvp3")]
+position = Vector2(-175, 2)
+buttonValue = "4"
+
+[node name="Button7" type="Area2D" parent="Buttons" unique_id=893726442]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button7" unique_id=1634180560]
+polygon = PackedVector2Array(-125, -28, -69, -28, -64, 23, -121, 28)
+
+[node name="Button" parent="Buttons/Button7/CollisionPolygon2D" unique_id=1914752452 instance=ExtResource("4_1bvp3")]
+position = Vector2(-100, -1)
+buttonValue = "5"
+
+[node name="Button8" type="Area2D" parent="Buttons" unique_id=12910769]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button8" unique_id=868944380]
+polygon = PackedVector2Array(-54, -24, 4, -36, 7, 18, -50, 21)
+
+[node name="Button" parent="Buttons/Button8/CollisionPolygon2D" unique_id=1157998716 instance=ExtResource("4_1bvp3")]
+position = Vector2(-25, -4)
+buttonValue = "6"
+
+[node name="Button9" type="Area2D" parent="Buttons" unique_id=1703284322]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button9" unique_id=1057976429]
+polygon = PackedVector2Array(-220, -98, -164, -100, -164, -43, -216, -42)
+
+[node name="Button" parent="Buttons/Button9/CollisionPolygon2D" unique_id=634345740 instance=ExtResource("4_1bvp3")]
+position = Vector2(-194, -68)
+buttonValue = "7"
+
+[node name="Button10" type="Area2D" parent="Buttons" unique_id=1162510281]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button10" unique_id=109802956]
+polygon = PackedVector2Array(-149, -98, -88, -95, -86, -42, -147, -42)
+
+[node name="Button" parent="Buttons/Button10/CollisionPolygon2D" unique_id=707434801 instance=ExtResource("4_1bvp3")]
+position = Vector2(-124, -66)
+buttonValue = "8"
+
+[node name="Button11" type="Area2D" parent="Buttons" unique_id=1031349863]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button11" unique_id=792348869]
+polygon = PackedVector2Array(-65, -98, -9, -106, -4, -47, -57, -43)
+
+[node name="Button" parent="Buttons/Button11/CollisionPolygon2D" unique_id=338039508 instance=ExtResource("4_1bvp3")]
+position = Vector2(-35, -73)
+buttonValue = "9"
+
+[node name="Button12" type="Area2D" parent="Buttons" unique_id=1255500626]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button12" unique_id=1975324373]
+polygon = PackedVector2Array(-49, 104, 1, 102, 4, 141, -48, 153)
+
+[node name="Button" parent="Buttons/Button12/CollisionPolygon2D" unique_id=825758999 instance=ExtResource("4_1bvp3")]
+position = Vector2(-25, 127)
+buttonValue = "."
+
+[node name="Button13" type="Area2D" parent="Buttons" unique_id=1340846622]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button13" unique_id=136053818]
+polygon = PackedVector2Array(23, 102, 88, 96, 91, 138, 25, 141)
+
+[node name="Button" parent="Buttons/Button13/CollisionPolygon2D" unique_id=1173037063 instance=ExtResource("4_1bvp3")]
+position = Vector2(57, 117)
+buttonValue = "+"
+
+[node name="Button14" type="Area2D" parent="Buttons" unique_id=1115980963]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button14" unique_id=770649569]
+polygon = PackedVector2Array(22, 35, 84, 38, 88, 77, 24, 73)
+
+[node name="Button" parent="Buttons/Button14/CollisionPolygon2D" unique_id=1247427936 instance=ExtResource("4_1bvp3")]
+position = Vector2(53, 57)
+buttonValue = "-"
+
+[node name="Button15" type="Area2D" parent="Buttons" unique_id=1773465033]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button15" unique_id=154603002]
+polygon = PackedVector2Array(22, -29, 74, -38, 83, 14, 22, 15)
+
+[node name="Button" parent="Buttons/Button15/CollisionPolygon2D" unique_id=426685566 instance=ExtResource("4_1bvp3")]
+position = Vector2(51, -11)
+buttonValue = "x"
+
+[node name="Button16" type="Area2D" parent="Buttons" unique_id=845629248]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button16" unique_id=501281980]
+polygon = PackedVector2Array(8, -103, 58, -105, 58, -49, 10, -49)
+
+[node name="Button" parent="Buttons/Button16/CollisionPolygon2D" unique_id=1745261875 instance=ExtResource("4_1bvp3")]
+position = Vector2(33, -77)
+buttonValue = "/"
+
+[node name="Button17" type="Area2D" parent="Buttons" unique_id=970336567]
+priority = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buttons/Button17" unique_id=1170919433]
+polygon = PackedVector2Array(77, -182, 145, -188, 143, -132, 72, -137)
+
+[node name="Button" parent="Buttons/Button17/CollisionPolygon2D" unique_id=31876925 instance=ExtResource("4_1bvp3")]
+position = Vector2(100, -161)
+buttonValue = "<-"
+
 [connection signal="input_event" from="Buttons/Button1" to="Buttons/Button1/CollisionPolygon2D/Button" method="_on_button_input_event"]
 [connection signal="input_event" from="Buttons/Button2" to="Buttons/Button2/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button3" to="Buttons/Button3/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button4" to="Buttons/Button4/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button5" to="Buttons/Button5/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button6" to="Buttons/Button6/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button7" to="Buttons/Button7/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button8" to="Buttons/Button8/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button9" to="Buttons/Button9/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button10" to="Buttons/Button10/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button11" to="Buttons/Button11/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button12" to="Buttons/Button12/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button13" to="Buttons/Button13/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button14" to="Buttons/Button14/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button15" to="Buttons/Button15/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button16" to="Buttons/Button16/CollisionPolygon2D/Button" method="_on_button_input_event"]
+[connection signal="input_event" from="Buttons/Button17" to="Buttons/Button17/CollisionPolygon2D/Button" method="_on_button_input_event"]
