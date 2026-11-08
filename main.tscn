@@ -1,8 +1,29 @@
 [gd_scene format=3 uid="uid://84303gret5dm"]
 
 [ext_resource type="Script" uid="uid://drpe8wrd6smpn" path="res://calculator.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dyouk5sitkxpf" path="res://assets/ghost-calculator.png" id="2_0xm2m"]
+[ext_resource type="FontFile" uid="uid://cnj8o60qe2214" path="res://assets/Chilanka-Regular.ttf" id="3_h2yge"]
+
+[sub_resource type="FontVariation" id="FontVariation_0xm2m"]
+base_font = ExtResource("3_h2yge")
+spacing_top = 10
 
 [node name="Node2D" type="Node2D" unique_id=1017324774]
 script = ExtResource("1_ig7tw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2141137335]
+texture = ExtResource("2_0xm2m")
+
+[node name="Label" type="Label" parent="." unique_id=1071897405]
+offset_left = -236.94681
+offset_top = -255.45279
+offset_right = 141.01672
+offset_bottom = -187.79465
+rotation = -0.061086524
+theme_override_fonts/font = SubResource("FontVariation_0xm2m")
+theme_override_font_sizes/font_size = 36
+text = "20+25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=738010724]
