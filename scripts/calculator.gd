@@ -72,21 +72,14 @@ func calculate() -> void:
 			return
 		
 		if (character == "+" || character == "-"):
-			if (operatorStack.size() == 0):
-				operatorStack.append(character)
-			elif (operatorStack[-1] == "("):
-				operatorStack.append(character)
-			elif (operatorStack[-1] == "+" || operatorStack[-1] == "-"):
-				output.append(operatorStack.pop_back())
-				operatorStack.append(character)
+			if (openParentheses == 0):
+				output.append_array(reverseArray(operatorStack))
 			else:
-				if (openParentheses == 0):
-					output.append_array(reverseArray(operatorStack))
-				else:
-					while true:
-						if (operatorStack[-1] == "("):
-							break
-						output.append(operatorStack.pop_back())
+				while true:
+					if (operatorStack[-1] == "("):
+						break
+					output.append(operatorStack.pop_back())
+			operatorStack.append(character)
 			i += 1
 			lastParsedCharacter = character
 			complexityScore += 5
