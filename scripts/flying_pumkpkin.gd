@@ -21,8 +21,10 @@ func _process(delta: float) -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !(event is InputEventMouseButton && event.pressed && event.button_index == MOUSE_BUTTON_LEFT):
 		return
+	get_parent().increaseScore()
 	queue_free()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if (area.get_meta("killPumpkin")):
+		get_parent().reset()
 		queue_free()
