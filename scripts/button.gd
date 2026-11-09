@@ -9,7 +9,7 @@ func _ready() -> void:
 	label.text = buttonValue
 
 
-func _on_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if !(event is InputEventMouseButton && event.pressed && event.button_index == MOUSE_BUTTON_LEFT):
 		return
 	var calculator = get_parent().get_parent().get_parent().get_parent()

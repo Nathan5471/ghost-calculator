@@ -1,5 +1,19 @@
 [gd_scene format=3 uid="uid://dem6pm0lpppul"]
 
+[ext_resource type="Texture2D" uid="uid://cchrfm3l2q5dq" path="res://assets/startBackground.png" id="1_jaeev"]
+[ext_resource type="Script" uid="uid://ckpj48qmljqf0" path="res://scripts/start.gd" id="1_u80x2"]
+
 [node name="Start" type="Node2D" unique_id=1741366699]
+script = ExtResource("1_u80x2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=152682960]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=560477500]
+texture = ExtResource("1_jaeev")
+
+[node name="PlayButton" type="Area2D" parent="." unique_id=725770292]
+
+[node name="PlayButtonCollission" type="CollisionPolygon2D" parent="PlayButton" unique_id=2016843164]
+polygon = PackedVector2Array(-179, -91, -114, -104, 79, -104, 79, -74, 79, 31, 64, 35, -49, 39, -172, 34, -177, -2)
+
+[connection signal="input_event" from="PlayButton" to="." method="_on_play_button_input_event"]
