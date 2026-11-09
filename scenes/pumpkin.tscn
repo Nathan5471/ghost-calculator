@@ -13,8 +13,9 @@ offset_left = -640.0
 offset_top = -360.0
 offset_right = 640.0
 offset_bottom = 360.0
+mouse_filter = 2
 color = Color(0.6117647, 0.31764707, 0.7137255, 1)
 
 [node name="FlyingPumkpkin" parent="." unique_id=1932411846 instance=ExtResource("2_ch6vm")]
-position = Vector2(-10, 544)
-scale = Vector2(0.4, 0.4)
+position = Vector2(-7, 424)
+scale = Vector2(0.38, 0.38)
