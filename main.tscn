@@ -289,19 +289,18 @@ equation you can
 without erroring or
 pressing \"C\" or \"<-\""
 
-[node name="GameData" type="ColorRect" parent="." unique_id=1469638764]
+[node name="GameDataRect" type="ColorRect" parent="." unique_id=1469638764]
 offset_left = 300.0
 offset_top = -264.0
 offset_right = 584.0
 offset_bottom = 51.0
 color = Color(0.6117647, 0.31764707, 0.7137255, 1)
 
-[node name="Title" type="Label" parent="GameData" unique_id=932921668]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 267.0
-offset_bottom = 292.0
+[node name="GameData" type="Label" parent="." unique_id=932921668]
+offset_left = 316.0
+offset_top = -248.0
+offset_right = 567.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("3_h2yge")
 theme_override_font_sizes/font_size = 48
 text = "Target: 000

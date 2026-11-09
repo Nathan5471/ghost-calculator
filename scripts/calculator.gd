@@ -1,7 +1,17 @@
 extends Node2D
 
-var currentText = ""
+const gameDataTemplate = "Target: AAA\nLast Score:\nBBB\nTotal Score:\nCCC"
+
+var currentText: String = ""
+var targetNumber: int = 0
+var totalScore: int = 0
+var lastScore: int = 0
 @onready var display = $Label
+@onready var gameDataDisplay = $GameData
+
+func _ready() -> void:
+	targetNumber = randi_range(100, 999)
+	displayGameData()
 
 func reverseArray(array: Array[String]) -> Array[String]:
 	var newArray: Array[String] = []
@@ -20,6 +30,7 @@ func calculate() -> void:
 	var lastParsedCharacter: String = ""
 	var openParentheses: int = 0
 	var i: int = 0
+	var complexityScore: int = 0
 	while true:
 		if (i == currentText.length()):
 			if (openParentheses != 0):
@@ -38,6 +49,7 @@ func calculate() -> void:
 			currentNumber += character
 			i += 1
 			lastParsedCharacter = character
+			complexityScore += 1
 			continue
 		elif (character == "."):
 			if (currentNumber.contains(".")):
@@ -48,6 +60,7 @@ func calculate() -> void:
 			currentNumber += character
 			i += 1
 			lastParsedCharacter = character
+			complexityScore += 25
 			continue
 		elif (currentNumber != ""):
 			output.append(currentNumber)
@@ -75,6 +88,7 @@ func calculate() -> void:
 						output.append(operatorStack.pop_back())
 			i += 1
 			lastParsedCharacter = character
+			complexityScore += 5
 			continue
 		elif (character == "x" || character == "/" || character == "%"):
 			if (operatorStack.size() == 0 || (operatorStack[-1] == "+" || operatorStack[-1] == "-")):
@@ -92,16 +106,19 @@ func calculate() -> void:
 				operatorStack.append(character)
 			i += 1
 			lastParsedCharacter = character
+			complexityScore += 50
 			continue
 		elif (character == "^"):
 			operatorStack.append(character)
 			i += 1
 			lastParsedCharacter = character
+			complexityScore += 250
 			continue
 		elif (character == "!"):
 			output.append(character)
 			i += 1
 			lastParsedCharacter = character
+			complexityScore += 1000
 			continue
 		
 		if (character == "("):
@@ -109,6 +126,7 @@ func calculate() -> void:
 			openParentheses += 1
 			i += 1
 			lastParsedCharacter = character
+			complexityScore += 100 * openParentheses
 			continue
 		elif (character == ")"):
 			if (openParentheses == 0):
@@ -122,6 +140,7 @@ func calculate() -> void:
 				output.append(currentCharacter)
 			i += 1
 			lastParsedCharacter = character
+			complexityScore += 100 * openParentheses
 			continue
 	
 	var evaluationStack: Array[float] = []
@@ -176,10 +195,20 @@ func calculate() -> void:
 	else:
 		currentText = str(evaluationStack[0])
 	display.text = currentText
+	lastScore = 0
+	if (float(targetNumber) == evaluationStack[0]):
+		lastScore = complexityScore
+	totalScore += lastScore
+	targetNumber = randi_range(100, 999)
+	displayGameData()
 
 func displayError(error: String) -> void:
 	currentText = ""
 	display.text = error
+	totalScore = 0
+	lastScore = 0
+	targetNumber = randi_range(100, 999)
+	displayGameData()
 
 func handleButtonPress(buttonValue: String) -> void:
 	if (buttonValue == "="):
@@ -187,11 +216,23 @@ func handleButtonPress(buttonValue: String) -> void:
 		return
 	elif (buttonValue == "<-"):
 		currentText = currentText.left(-1)
+		totalScore = 0
+		lastScore = 0
+		targetNumber = randi_range(100, 999)
+		displayGameData()
 	elif (buttonValue == "C"):
 		currentText = ""
+		totalScore = 0
+		lastScore = 0
+		targetNumber = randi_range(100, 999)
+		displayGameData()
 	else:
 		currentText += buttonValue
 	updateDisplay()
 
 func updateDisplay() -> void:
 	display.text = currentText
+
+func displayGameData() -> void:
+	var gameData = gameDataTemplate.replace("AAA", str(targetNumber)).replace("BBB", str(lastScore)).replace("CCC", str(totalScore))
+	gameDataDisplay.text = gameData
