@@ -6,6 +6,7 @@ var currentText: String = ""
 var targetNumber: int = 0
 var totalScore: int = 0
 var lastScore: int = 0
+var streak: int = 0
 @onready var display = $Label
 @onready var gameDataDisplay = $GameData
 
@@ -60,7 +61,7 @@ func calculate() -> void:
 			currentNumber += character
 			i += 1
 			lastParsedCharacter = character
-			complexityScore += 25
+			complexityScore += 150
 			continue
 		elif (currentNumber != ""):
 			output.append(currentNumber)
@@ -112,13 +113,13 @@ func calculate() -> void:
 			operatorStack.append(character)
 			i += 1
 			lastParsedCharacter = character
-			complexityScore += 250
+			complexityScore += 2500
 			continue
 		elif (character == "!"):
 			output.append(character)
 			i += 1
 			lastParsedCharacter = character
-			complexityScore += 1000
+			complexityScore += 5000
 			continue
 		
 		if (character == "("):
@@ -197,7 +198,10 @@ func calculate() -> void:
 	display.text = currentText
 	lastScore = 0
 	if (float(targetNumber) == evaluationStack[0]):
-		lastScore = complexityScore
+		streak += 1
+		lastScore = floor(complexityScore * (1 + streak/100))
+	else:
+		streak = 0
 	totalScore += lastScore
 	targetNumber = randi_range(100, 999)
 	displayGameData()
