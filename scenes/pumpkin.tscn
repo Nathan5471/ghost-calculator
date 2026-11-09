@@ -3,10 +3,15 @@
 [ext_resource type="Script" uid="uid://dlk2sq0e7nqix" path="res://scripts/pumpkin.gd" id="1_qdl88"]
 [ext_resource type="PackedScene" uid="uid://br2vl4crxxjoa" path="res://scenes/flyingPumkpkin.tscn" id="2_ch6vm"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p3yo"]
+size = Vector2(3918, 140)
+
 [node name="Pumpkin" type="Node2D" unique_id=1999501455]
 script = ExtResource("1_qdl88")
+flyingPumpkinScene = ExtResource("2_ch6vm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1166397746]
+zoom = Vector2(0.4, 0.4)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=703270910]
 offset_left = -640.0
@@ -16,6 +21,14 @@ offset_bottom = 360.0
 mouse_filter = 2
 color = Color(0.6117647, 0.31764707, 0.7137255, 1)
 
-[node name="FlyingPumkpkin" parent="." unique_id=1932411846 instance=ExtResource("2_ch6vm")]
-position = Vector2(-7, 424)
-scale = Vector2(0.38, 0.38)
+[node name="Timer" type="Timer" parent="." unique_id=1854980003]
+autostart = true
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=1527416013]
+metadata/killPumpkin = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=189771784]
+position = Vector2(4, 761)
+shape = SubResource("RectangleShape2D_8p3yo")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -10,8 +10,10 @@ script = ExtResource("1_cwbp7")
 texture = ExtResource("2_541sy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1975554311]
+metadata/killPumpkin = false
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1388872725]
 polygon = PackedVector2Array(146, -28, 175, 116, 116, 140, 11, 137, -121, 125, -171, 64, -170, -34, -144.37714, -94.44702, -77, -132, -23, -142, 77, -111)
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
