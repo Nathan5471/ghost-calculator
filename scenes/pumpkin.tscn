@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dx52fh4jdowka"]
+
+[ext_resource type="Script" uid="uid://dlk2sq0e7nqix" path="res://scripts/pumpkin.gd" id="1_qdl88"]
+
+[node name="Pumpkin" type="Node2D" unique_id=1999501455]
+script = ExtResource("1_qdl88")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1166397746]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=703270910]
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.6117647, 0.31764707, 0.7137255, 1)

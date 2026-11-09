@@ -16,4 +16,10 @@ texture = ExtResource("1_jaeev")
 [node name="PlayButtonCollission" type="CollisionPolygon2D" parent="PlayButton" unique_id=2016843164]
 polygon = PackedVector2Array(-179, -91, -114, -104, 79, -104, 79, -74, 79, 31, 64, 35, -49, 39, -172, 34, -177, -2)
 
+[node name="Secret Pumkpkin Button" type="Area2D" parent="." unique_id=1936532527]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Secret Pumkpkin Button" unique_id=1963756888]
+polygon = PackedVector2Array(-76, 127, -121, 125, -173, 139, -194, 166, -199, 257, -180, 288, -154, 308, -122, 322, -88, 327, -32, 332, 28, 334, 82, 334, 116, 320, 132, 304, 131, 261, 112, 226, 76, 186, 67, 173, 130, 150, 153, 140, 235, 139, 302, 116, 305, 96, 302, 78, 288, 67, 244, 67, 205, 71, 172, 73, 146, 78, 124, 87, 100, 104, 63, 150, 47, 155, 18, 130, -36, 130, -43, 106, -66, 64, -111, 73, -113, 84)
+
 [connection signal="input_event" from="PlayButton" to="." method="_on_play_button_input_event"]
+[connection signal="input_event" from="Secret Pumkpkin Button" to="." method="_on_secret_pumkpkin_button_input_event"]
